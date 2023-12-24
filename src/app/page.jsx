@@ -1,68 +1,48 @@
-import {
-  Briefcase,
-  Compass,
-  MoreVertical,
-  UserRound,
-  UsersRound,
-  Youtube,
-} from "lucide-react";
+// Page.js
+"use client";
 import Image from "next/image";
-import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import MenuBar from "@/components/MenuBar";
+import LoginForm from "@/components/LoginForm";
+import { useState } from "react";
 
-const page = () => {
+const Page = () => {
+  const [focusEmailInput, setFocusEmailInput] = useState(false);
+
+  const handleSignInClick = () => {
+    setFocusEmailInput(true);
+  };
+
   return (
-    <div>
-      {/* Nav Page Design */}
-      <div className="flex justify-between px-10">
-        <div>
-          <Image src={"/header.png"} width={150} height={150} alt="Header" />
-        </div>
-        {/* Menubar started */}
-        <div className="mt-6">
-          <Menubar className="space-x-7">
-            <MenubarMenu>
-              <MenubarTrigger className="flex flex-col space-y-2">
-                <Compass />
-                <p>Discover</p>
-              </MenubarTrigger>
-              <MenubarTrigger className="flex flex-col space-y-2">
-                <UserRound />
-                <p>People</p>
-              </MenubarTrigger>
-              <MenubarTrigger className="flex flex-col space-y-2">
-                <Youtube />
-                <p>Learning</p>
-              </MenubarTrigger>
-              <MenubarTrigger className="flex flex-col space-y-2">
-                <Briefcase />
-                <p>Jobs</p>
-              </MenubarTrigger>
-              <Separator
-                orientation="vertical"
-                className="text-extrabold bg-black"
-              />
-              <MenubarTrigger>Join Now</MenubarTrigger>
-              <MenubarTrigger>
-                <Button
-                  variant="outline"
-                  className="outline-blue-600 text-blue-600 p-6 rounded-[30px] mr-4"
-                >
-                  Sign in
-                </Button>
-              </MenubarTrigger>
-            </MenubarMenu>
-          </Menubar>
-        </div>
-        {/* Menubar end */}
-      </div>
-      {/* login page content */}
+    <>
       <div>
-        <h2>Welcome to your Professional Community</h2>
+        {/* Nav Page Design */}
+        <div className="flex justify-between px-10">
+          <div>
+            <Image src={"/header.png"} width={150} height={150} alt="Header" />
+          </div>
+          {/* Menubar started */}
+          <MenuBar onSignInClick={handleSignInClick} />
+          {/* Menubar end */}
+        </div>
+        {/* login page content */}
+        <div>
+          <h2 className="text-[#b9978f] text-6xl ml-[2rem] mt-11">
+            Welcome to your <br /> Professional Community
+          </h2>
+          <LoginForm focusEmailInput={focusEmailInput} />
+        </div>
+        <div>
+          <Image
+            src={"/laptop.jpg"}
+            width={700}
+            height={700}
+            alt="Laptop"
+            className="float-right absolute top-[17rem] right-0"
+          />
+        </div>
       </div>
-    </div>
-  );
+    </>
+  )
 };
 
-export default page;
+export default Page;
