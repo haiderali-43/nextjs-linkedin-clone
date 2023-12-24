@@ -29,15 +29,15 @@ const Page = () => {
           <h2 className="text-[#b9978f] text-6xl ml-[2rem] mt-11">
             Welcome to your <br /> Professional Community
           </h2>
-          <LoginForm focusEmailInput={focusEmailInput} />
+          <LoginForm focusEmailInput={focusEmailInput} buttontitle="Sign in" forgotpassword="Forgot Password" />
         </div>
         <div>
           <Image
             src={"/laptop.jpg"}
-            width={700}
-            height={700}
+            width={600}
+            height={600}
             alt="Laptop"
-            className="float-right absolute top-[17rem] right-0"
+            className="float-right absolute top-[12rem] right-0"
           />
         </div>
       </div>

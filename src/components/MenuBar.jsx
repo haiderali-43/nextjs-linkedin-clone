@@ -2,6 +2,7 @@ import { Briefcase, Compass, UserRound, Youtube } from "lucide-react";
 import { Menubar, MenubarMenu, MenubarTrigger } from "./ui/menubar";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const MenuBar = ({ onSignInClick }) => {
   return (
@@ -29,7 +30,9 @@ const MenuBar = ({ onSignInClick }) => {
             className="text-extrabold bg-black"
           />
           <MenubarTrigger>
-            <p className="cursor-pointer text-blue-600">Join Now</p>
+            <Link className="cursor-pointer text-blue-600" href={"/signup"}>
+              Join Now
+            </Link>
           </MenubarTrigger>
           <MenubarTrigger>
             <Button

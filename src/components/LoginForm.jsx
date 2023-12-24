@@ -1,7 +1,8 @@
+"use client"
 import React, { useRef, useEffect } from "react";
 import { Button } from "./ui/button";
 
-const LoginForm = ({ focusEmailInput }) => {
+const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
   const emailRef = useRef(null);
 
   useEffect(() => {
@@ -24,12 +25,12 @@ const LoginForm = ({ focusEmailInput }) => {
           placeholder="Password"
           className="border-2 border-black/25 rounded-sm p-3 outline-none"
         />
-        <span className="text-blue-400 cursor-pointer">Forget Password</span>
+        <span className="text-blue-400 cursor-pointer">{forgotpassword}</span>
         <Button
           variant="outline"
           className="bg-blue-500 text-white border-2 border-blue-500"
         >
-          Sign in
+          {buttontitle}
         </Button>
       </form>
     </div>
