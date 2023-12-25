@@ -1,9 +1,8 @@
-// Page.js
 "use client";
 import Image from "next/image";
-import MenuBar from "@/components/MenuBar";
-import LoginForm from "@/components/LoginForm";
+import MenuBar from "../components/MenuBar";
 import { useState } from "react";
+import LoginForm from "../components/LoginForm";
 
 const Page = () => {
   const [focusEmailInput, setFocusEmailInput] = useState(false);
@@ -29,7 +28,7 @@ const Page = () => {
           <h2 className="text-[#b9978f] text-6xl ml-[2rem] mt-11">
             Welcome to your <br /> Professional Community
           </h2>
-          <LoginForm focusEmailInput={focusEmailInput} buttontitle="Sign in" forgotpassword="Forgot Password" />
+          <LoginForm focusEmailInput={focusEmailInput} buttontitle={"Sign in"}  forgotpassword={"Forgot Password"}/>
         </div>
         <div>
           <Image
@@ -42,7 +41,7 @@ const Page = () => {
         </div>
       </div>
     </>
-  )
+  );
 };
 
 export default Page;

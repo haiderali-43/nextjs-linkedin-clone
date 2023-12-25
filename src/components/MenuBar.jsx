@@ -4,7 +4,7 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
-const MenuBar = ({ onSignInClick }) => {
+const MenuBar = () => {
   return (
     <div className="mt-6">
       <Menubar className="space-x-7">
@@ -38,7 +38,6 @@ const MenuBar = ({ onSignInClick }) => {
             <Button
               variant="outline"
               className="outline-blue-600 border-2 border-neutral-400 text-blue-600 p-2 rounded-md"
-              onClick={onSignInClick}
             >
               Sign in
             </Button>
