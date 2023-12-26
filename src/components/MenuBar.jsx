@@ -4,9 +4,9 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import Link from "next/link";
 
-const MenuBar = () => {
+const MenuBar = ({onEmailClick}) => {
   return (
-    <div className="mt-6">
+    <div className="mt-6 hidden md:block">
       <Menubar className="space-x-7">
         <MenubarMenu>
           <MenubarTrigger className="flex flex-col space-y-2">
@@ -29,19 +29,22 @@ const MenuBar = () => {
             orientation="vertical"
             className="text-extrabold bg-black"
           />
-          <MenubarTrigger>
-            <Link className="cursor-pointer text-blue-600" href={"/signup"}>
-              Join Now
-            </Link>
-          </MenubarTrigger>
-          <MenubarTrigger>
-            <Button
-              variant="outline"
-              className="outline-blue-600 border-2 border-neutral-400 text-blue-600 p-2 rounded-md"
-            >
-              Sign in
-            </Button>
-          </MenubarTrigger>
+          <div className="flex items-center">
+            <MenubarTrigger>
+              <Link className="cursor-pointer text-blue-600" href={"/signup"}>
+                Join Now
+              </Link>
+            </MenubarTrigger>
+            <MenubarTrigger>
+              <Button
+                variant="outline"
+                className="outline-blue-600 border-2 border-neutral-400 text-blue-600 p-2 rounded-md ml-4"
+                onClick={onEmailClick}
+              >
+                Sign in
+              </Button>
+            </MenubarTrigger>
+          </div>
         </MenubarMenu>
       </Menubar>
     </div>

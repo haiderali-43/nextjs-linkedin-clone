@@ -1,11 +1,11 @@
 //feed page
 
-import HomeNav from "../../components/HomeNav/HomeNav"
+import HomeNav from "../../components/Navbar/Navbar"
 
 const page = () => {
   return (
     <div>
-      <HomeNav/>
+      
     </div>
   )
 }

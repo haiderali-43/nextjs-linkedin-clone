@@ -9,7 +9,8 @@ const page = () => {
     <div className="flex items-center justify-center flex-col">
       <>
         <Image src={"/header.png"} alt="Signup Page" width={200} height={200} />
-        <p className=" text-3xl">Make the most of your professional life</p>
+        <p className=" text-3xl md:hidden">Make the most of <br /> your professional life</p>
+        <p className=" text-3xl hidden md:block">Make the most of your professional life</p>
         <LoginForm buttontitle="Accept and register" className="ml-[4rem]" />
         <div className="mt-4">OR</div>
         <div>

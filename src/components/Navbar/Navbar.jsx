@@ -2,7 +2,7 @@ import Image from "next/image";
 import SearchBar from "./SearchBar";
 import MenuIcons from "./MenuIcons";
 
-const HomeNav = () => {
+const Navbar = () => {
   return (
     <div className="flex justify-between w-full h-[50px] p-2">
       <div className="mt-1 ml-4">
@@ -18,4 +18,4 @@ const HomeNav = () => {
   );
 };
 
-export default HomeNav;
+export default Navbar;

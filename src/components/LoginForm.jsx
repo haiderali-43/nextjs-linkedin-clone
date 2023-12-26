@@ -1,6 +1,7 @@
-"use client"
+"use client";
 import React, { useRef, useEffect } from "react";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
   const emailRef = useRef(null);
@@ -25,13 +26,22 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
           placeholder="Password"
           className="border-2 border-black/25 rounded-sm p-3 outline-none"
         />
-        <span className="text-blue-400 cursor-pointer">{forgotpassword}</span>
+        <span className="text-blue-400 cursor-pointer hover:underline">{forgotpassword}</span>
         <Button
           variant="outline"
           className="bg-blue-500 text-white border-2 border-blue-500"
         >
           {buttontitle}
         </Button>
+        <span>
+          Don&rsquo;t have an account?{" "}
+          <Link
+            href={"/signup"}
+            className="text-blue-500 hover:underline transition-transform duration-75 hover:translate-x-4"
+          >
+            Sign up
+          </Link>
+        </span>
       </form>
     </div>
   );
