@@ -40,7 +40,10 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
           id="password"
         />
 
-        <p className="cursor-pointer  relative left-[21rem] -top-12 " onClick={togglePasswordVisibility}>
+        <p
+          className="cursor-pointer  relative left-[21rem] -top-12 "
+          onClick={togglePasswordVisibility}
+        >
           {showPasswordText}
         </p>
 
