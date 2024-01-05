@@ -12,7 +12,7 @@ const Page = () => {
   };
 
   return (
-    <div>
+    <div className="overflow-hidden md:overflow-scroll">
       {/* Nav Page Design */}
       <div className="flex justify-between px-10">
         <div>
@@ -25,8 +25,8 @@ const Page = () => {
           />
           <Image
             src={"/header.png"}
-            width={100}
-            height={100}
+            width={80}
+            height={80}
             alt="Header"
             className="md:hidden mr-2"
           />

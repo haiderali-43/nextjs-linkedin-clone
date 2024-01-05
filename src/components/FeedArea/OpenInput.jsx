@@ -2,7 +2,7 @@ import React from "react";
 import Avatar from "../LeftSide/Profile Card/Avatar";
 import { CalendarDays, ImageDown, Newspaper } from "lucide-react";
 
-const OpenInput = () => {
+const OpenInput = ({ handleInputOpen }) => {
   return (
     <div className=" ">
       <div className="border rounded-lg border-gray-300">
@@ -14,7 +14,8 @@ const OpenInput = () => {
             <input
               type="text"
               placeholder="Start a post"
-              className="w-full h-10 py-2 rounded-full px-4 mt-[-25px] text-sm font-semibold text-gray-700 bg-white border-2 border-gray-400 outline-none cursor-pointer"
+              className="w-full h-10 py-2 rounded-full px-4 mt-[-25px] text-sm font-semibold text-gray-700 bg-white border-2 border-gray-400 outline-none cursor-pointer hover:bg-gray-300 transition-all duration-150"
+              onClick={handleInputOpen}
             />
           </div>
         </div>

@@ -59,7 +59,7 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
         </Button>
 
         <span>
-          Don&rsquo;t have an account?{" "}
+          Don&rsquo;t have an account?
           <Link
             href={"/signup"}
             className="text-blue-500 hover:underline transition-transform duration-75 hover:translate-x-4"
