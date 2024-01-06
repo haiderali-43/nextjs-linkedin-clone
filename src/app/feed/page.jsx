@@ -10,9 +10,9 @@ const page = () => {
     <div className="h-[100vh]">
       <Navbar />
       <div className="flex justify-between mt-14">
-        <Left/>
-        <Area/>
-        <Right/>
+        <Left />
+        <Area />
+        <Right />
       </div>
     </div>
   );

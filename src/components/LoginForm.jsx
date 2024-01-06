@@ -62,7 +62,7 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
           Don&rsquo;t have an account?
           <Link
             href={"/signup"}
-            className="text-blue-500 hover:underline transition-transform duration-75 hover:translate-x-4"
+            className="text-blue-500 ml-1 hover:underline transition-transform duration-75 hover:translate-x-4"
           >
             Sign up
           </Link>

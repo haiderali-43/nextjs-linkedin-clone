@@ -58,10 +58,10 @@ const Page = () => {
         {/* mobile screens */}
         <Image
           src={"/laptop.jpg"}
-          width={400}
-          height={400}
+          width={200}
+          height={200}
           alt="Laptop"
-          className="absolute bottom-8 left-[2rem] m-auto md:hidden w-auto h-auto"
+          className="absolute bottom-4 left-[3rem] m-auto md:hidden w-auto h-auto"
         />
       </div>
     </div>

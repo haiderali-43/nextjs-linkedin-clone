@@ -1,17 +1,47 @@
+"use client";
 import { Separator } from "../ui/separator";
 import OpenInput from "./OpenInput";
 import PostDisplay from "./PostDisplay";
 import PostModal from "./PostModal";
+import { useState } from "react";
 
 const Area = () => {
+  const [isPostModalOpen, setPostModalOpen] = useState(false);
+  const [posts, setPosts] = useState([]);
+
+  const handlePost = (post) => {
+    // Update the posts array with the new post
+    setPosts([...posts, post]);
+
+    // Close the modal
+    closePostModal();
+  };
+
+  const openPostModal = () => {
+    setPostModalOpen(true);
+  };
+
+  const closePostModal = () => {
+    setPostModalOpen(false);
+  };
   return (
     <div className="w-[49%] border-2 border-grey-400 rounded-md mt-3 m-auto p-2 h-[100vh] overflow-hidden">
-      <OpenInput />
+      <OpenInput handleInputOpen={openPostModal} />
       <Separator className="mt-5" />
-      <PostModal/>
+      <PostModal
+        isOpen={isPostModalOpen}
+        onClose={closePostModal}
+        onPost={handlePost}
+      />
 
-      {/* Post display */}
-      <PostDisplay />
+      {posts.map((post, index) => (
+        <PostDisplay
+          key={index}
+          postContent={post.postContent}
+          imageUrl={post.imageUrl}
+          imageDimensions={post.imageDimensions}
+        />
+      ))}
     </div>
   );
 };
