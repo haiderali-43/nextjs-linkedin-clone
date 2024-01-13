@@ -85,7 +85,7 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
                       asChild
                       className="px-0 font-normal"
                     >
-                      <Link href="/auth/reset">Forgot password?</Link>
+                      <Link href="/auth/reset">{forgotpassword}</Link>
                     </Button>
                     <FormMessage />
                   </FormItem>
