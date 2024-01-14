@@ -6,8 +6,6 @@ import LoginForm from "../components/LoginForm";
 
 const Page = () => {
   const [focusEmailInput, setFocusEmailInput] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const handleSignInClick = () => {
     setFocusEmailInput(true);

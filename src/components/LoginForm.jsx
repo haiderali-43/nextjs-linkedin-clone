@@ -77,8 +77,18 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="******" type="password" />
+                      <Input
+                        {...field}
+                        placeholder="******"
+                        type={passwordInputType}
+                      />
                     </FormControl>
+                    <p
+                      className="cursor-pointer relative left-[21rem] -top-9"
+                      onClick={togglePasswordVisibility}
+                    >
+                      {showPasswordText}
+                    </p>
                     <Button
                       size="sm"
                       variant="link"
