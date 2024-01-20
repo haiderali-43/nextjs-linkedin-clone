@@ -9,3 +9,142 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  user_id                        Int                 @id @default(autoincrement())
+  name                           String?
+  email                          String?             @unique
+  password                       String
+  location                       String
+  joining_date                   DateTime
+  Profiles                       Profiles?           @relation(fields: [profilesProfile_id], references: [profile_id])
+  profilesProfile_id             Int?
+  Connections                    Connections?        @relation(fields: [connectionsConnection_id], references: [connection_id])
+  connectionsConnection_id       Int?
+  Skills                         Skills?             @relation(fields: [skillsSkill_id], references: [skill_id])
+  skillsSkill_id                 Int?
+  Experiences                    Experiences?        @relation(fields: [experiencesExperience_id], references: [experience_id])
+  experiencesExperience_id       Int?
+  EducationalDetails             EducationalDetails? @relation(fields: [educationalDetailsEducation_id], references: [education_id])
+  educationalDetailsEducation_id Int?
+  certifications                 Certifications?     @relation(fields: [certificationsCertification_id], references: [certification_id])
+  certificationsCertification_id Int?
+  Posts                          Posts?              @relation(fields: [postsPost_id], references: [post_id])
+  postsPost_id                   Int?
+  comment                        Comments[]
+  Likes                          Likes?              @relation(fields: [likesLike_id], references: [like_id])
+  likesLike_id                   Int?
+
+  @@map("users")
+}
+
+model Profiles {
+  profile_id               Int                  @id
+  headline                 String?
+  summary                  String?
+  industry                 String
+  website                  String?
+  user                     User[]
+  connections              Connections[]
+  skills                   Skills[]
+  experiences              Experiences?         @relation(fields: [experiencesExperience_id], references: [experience_id])
+  experiencesExperience_id Int?
+  education                EducationalDetails[]
+  certifications           Certifications[]
+}
+
+model Connections {
+  connection_id      Int       @id
+  users              User[]
+  connection_status  Boolean
+  request_sent_by    String
+  request_sent_to    String
+  Profiles           Profiles? @relation(fields: [profilesProfile_id], references: [profile_id])
+  profilesProfile_id Int?
+}
+
+model Skills {
+  skill_id           Int       @id
+  skill_name         String?
+  users              User[]
+  Profiles           Profiles? @relation(fields: [profilesProfile_id], references: [profile_id])
+  profilesProfile_id Int?
+}
+
+model Experiences {
+  experience_id Int        @id
+  users         User[]
+  company_name  String
+  job_title     String
+  location      String
+  start_date    DateTime
+  end_date      DateTime
+  current_here  Boolean?
+  description   String?
+  job_type      String?
+  Profiles      Profiles[]
+}
+
+model EducationalDetails {
+  education_id       Int       @id
+  school_name        String
+  degree             String
+  field_of_study     String
+  start_date         DateTime
+  end_date           DateTime
+  is_currently_going Boolean
+  user               User[]
+  Profiles           Profiles? @relation(fields: [profilesProfile_id], references: [profile_id])
+  profilesProfile_id Int?
+}
+
+model ContactInformation {
+  contact_information_id Int     @id
+  email                  String? @unique
+  email_visibility       Boolean
+  phone_no               String?
+  phone_visibility       Boolean
+  website                String?
+  website_visibility     Boolean
+}
+
+model Certifications {
+  certification_id   Int       @id
+  certificate_name   String
+  start_date         DateTime
+  end_date           DateTime
+  current_status     Boolean
+  provider           String
+  image              String?
+  description        String?
+  user               User[]
+  Profiles           Profiles? @relation(fields: [profilesProfile_id], references: [profile_id])
+  profilesProfile_id Int?
+}
+
+model Posts {
+  post_id       Int        @id
+  user          User[]
+  content       String
+  images        String?
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @updatedAt
+  comment       Comments[]
+  Likes         Likes?     @relation(fields: [likesLike_id], references: [like_id])
+  likesShare_id Int?
+  likesLike_id  Int?
+}
+
+model Comments {
+  comment_id  Int      @id
+  post        Posts[]
+  user        User[]
+  content     String
+  create_date DateTime
+}
+
+model Likes {
+  like_id Int     @id
+  post    Posts[]
+  user    User[]
+}

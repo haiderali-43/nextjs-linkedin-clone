@@ -10,7 +10,6 @@ const Area = () => {
   const [posts, setPosts] = useState([]);
 
   const handlePost = (post) => {
-    // Update the posts array with the new post
     setPosts([...posts, post]);
 
     // Close the modal

@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { UploadButton } from "../../utils/uploadthing";
+
 
 function PostModal({ isOpen, onClose, onPost }) {
   const [postContent, setPostContent] = useState("");
@@ -58,18 +58,6 @@ function PostModal({ isOpen, onClose, onPost }) {
           placeholder="What's on your mind?"
           value={postContent}
           onChange={(e) => setPostContent(e.target.value)}
-        />
-
-        <UploadButton
-          endpoint="imageUploader"
-          onClientUploadComplete={(res) => {
-            console.log("Files: ", res);
-            alert("Upload Completed");
-          }}
-          onUploadError={(error) => {
-            // Do something with the error.
-            alert(`ERROR! ${error.message}`);
-          }}
         />
 
         <label className="block text-gray-700 text-sm font-bold mb-2">
