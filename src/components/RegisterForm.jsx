@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
+import auth from "../../firebaseConfig";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -17,13 +18,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Loginschema } from "@/schemes/login";
 import { Input } from "./ui/input";
 import { Social } from "./social";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const emailRef = useRef(null);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (focusEmailInput && emailRef.current) {
@@ -48,6 +50,11 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
   const onSubmit = () => {
     console.log("jjjjjjjjj");
   };
+
+  const handleSignup = () => {
+    
+  };
+
   return (
     <div className="ml-8 mt-14 w-[400px]">
       <Form {...form}>
@@ -66,6 +73,7 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
                         placeholder="john.doe@example.com"
                         type="email"
                         ref={emailRef}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </FormControl>
                     <FormMessage />
@@ -83,6 +91,7 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
                         {...field}
                         placeholder="******"
                         type={passwordInputType}
+                        onChange={(e) => setPassword(e.target.value)}
                       />
                     </FormControl>
                     <p
@@ -96,6 +105,7 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
                       variant="link"
                       asChild
                       className="px-0 font-normal"
+                      onClick={handleSignup}
                     >
                       <Link href="/auth/reset">{forgotpassword}</Link>
                     </Button>

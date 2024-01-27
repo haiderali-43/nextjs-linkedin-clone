@@ -1,14 +1,12 @@
-"use client";
-import { useState } from "react";
-import LoginForm from "../../components/LoginForm";
-import { Button } from "../../components/ui/button";
+
+import RegisterForm from "../../components/RegisterForm";
+
 
 import Image from "next/image";
 import Link from "next/link";
 
 const Page = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+ 
   return (
     <div className="flex items-center justify-center flex-col overflow-hidden md:overflow-scroll">
       <Image src={"/header.png"} alt="Signup Page" width={200} height={200} />
@@ -18,7 +16,7 @@ const Page = () => {
       <p className=" text-3xl hidden md:block">
         Make the most of your professional life
       </p>
-      <LoginForm buttontitle="Accept and register" />
+      <RegisterForm buttontitle="Accept and register" />
       <div className="mt-4">OR</div>
 
       <div className="mt-4">
