@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import auth from "../../firebaseConfig";
+
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -18,7 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Loginschema } from "@/schemes/login";
 import { Input } from "./ui/input";
 import { Social } from "./social";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+
 
 const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
   const router = useRouter();

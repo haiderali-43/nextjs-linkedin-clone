@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-
+import { set } from "react-hook-form";
 
 function PostModal({ isOpen, onClose, onPost }) {
   const [postContent, setPostContent] = useState("");
@@ -12,15 +12,12 @@ function PostModal({ isOpen, onClose, onPost }) {
   });
 
   const handlePost = () => {
-    console.log("Posting:", postContent);
-    console.log("Selected Image:", selectedImage);
-    console.log("Image Dimensions:", imageDimensions);
-
     onPost({
       postContent: postContent,
       selectedImage: selectedImage ? URL.createObjectURL(selectedImage) : null,
       imageDimensions: imageDimensions,
     });
+    setPostContent("");
 
     // Close the modal
     onClose();
