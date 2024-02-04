@@ -16,6 +16,7 @@ const Page = () => {
       {/* Nav Page Design */}
       <div className="flex justify-between px-10">
         <div>
+          
           <Image
             src={"/header.png"}
             width={150}
