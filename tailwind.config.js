@@ -1,46 +1,36 @@
-import { withUt } from "uploadthing/tw";
-
-export const darkMode = "class"; // Fixed darkMode assignment
-export const content = [
-  "./pages/**/*.{js,jsx}",
-  "./components/**/*.{js,jsx}",
-  "./app/**/*.{js,jsx}",
-  "./src/**/*.{js,jsx}",
-]; // Removed ":" after content
-
-export const prefix = "";
-export const theme = {
-  container: {
-    center: true,
-    padding: "2rem",
-    screens: {
-      "2xl": "1400px",
+module.exports = {
+  content: [
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
+  ],
+  theme: {
+    extend: {
+      container: {
+        center: true,
+        padding: "2rem",
+        screens: {
+          "2xl": "1400px",
+        },
+      },
+      extend: {
+        keyframes: {
+          "accordion-down": {
+            from: { height: "0" },
+            to: { height: "var(--radix-accordion-content-height)" },
+          },
+          "accordion-up": {
+            from: { height: "var(--radix-accordion-content-height)" },
+            to: { height: "0" },
+          },
+        },
+        animation: {
+          "accordion-down": "accordion-down 0.2s ease-out",
+          "accordion-up": "accordion-up 0.2s ease-out",
+        },
+      },
     },
   },
-  extend: {
-    keyframes: {
-      "accordion-down": {
-        from: { height: "0" },
-        to: { height: "var(--radix-accordion-content-height)" },
-      },
-      "accordion-up": {
-        from: { height: "var(--radix-accordion-content-height)" },
-        to: { height: "0" },
-      },
-    },
-    animation: {
-      "accordion-down": "accordion-down 0.2s ease-out",
-      "accordion-up": "accordion-up 0.2s ease-out",
-    },
-  },
+  plugins: [require("tailwindcss-animate")],
 };
-
-export const plugins = [require("tailwindcss-animate")];
-
-export default withUt({
-  darkMode,
-  content,
-  prefix,
-  theme,
-  plugins,
-});

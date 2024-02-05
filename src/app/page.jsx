@@ -12,7 +12,7 @@ const Page = () => {
   };
 
   return (
-    <div className="overflow-hidden md:overflow-scroll">
+    <div className="overflow-hidden">
       {/* Nav Page Design */}
       <div className="flex justify-between px-10">
         <div>

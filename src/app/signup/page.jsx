@@ -8,7 +8,7 @@ import Link from "next/link";
 const Page = () => {
  
   return (
-    <div className="flex items-center justify-center flex-col overflow-hidden md:overflow-scroll">
+    <div className="flex items-center justify-center flex-col overflow-hidden">
       <Image src={"/header.png"} alt="Signup Page" width={200} height={200} />
       <p className=" text-3xl md:hidden">
         Make the most of <br /> your professional life

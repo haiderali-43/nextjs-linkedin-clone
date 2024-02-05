@@ -1,37 +1,15 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-
-import { Button } from "./ui/button";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../components/ui/form";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Loginschema } from "@/schemes/login";
-import { Input } from "./ui/input";
-import { Social } from "./social";
+import app from "../../firebaseConfig";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-
-const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
+const RegisterForm = ({ buttontitle }) => {
+  const auth = getAuth(app);
   const router = useRouter();
-  const emailRef = useRef(null);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    if (focusEmailInput && emailRef.current) {
-      emailRef.current.focus();
-    }
-  }, [focusEmailInput]);
 
   function togglePasswordVisibility() {
     setPasswordVisible((prev) => !prev);
@@ -40,89 +18,51 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
   const passwordInputType = passwordVisible ? "text" : "password";
   const showPasswordText = passwordVisible ? "Hide" : "Show";
 
-  const form = useForm({
-    resolver: zodResolver(Loginschema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-  const onSubmit = () => {
-    console.log("jjjjjjjjj");
-  };
-
-  const handleSignup = () => {
-    
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      await createUserWithEmailAndPassword(auth, email, password).then(
+        (userCredential) => {
+          const user = userCredential.user;
+          router.push("/");
+          console.log(user);
+        }
+      );
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+    }
   };
 
   return (
-    <div className="ml-8 mt-14 w-[400px]">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="space-y-4">
-            <>
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        placeholder="john.doe@example.com"
-                        type="email"
-                        ref={emailRef}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        placeholder="******"
-                        type={passwordInputType}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </FormControl>
-                    <p
-                      className="cursor-pointer relative left-[21rem] -top-9"
-                      onClick={togglePasswordVisibility}
-                    >
-                      {showPasswordText}
-                    </p>
-                    <Button
-                      size="sm"
-                      variant="link"
-                      asChild
-                      className="px-0 font-normal"
-                      onClick={handleSignup}
-                    >
-                      <Link href="/auth/reset">{forgotpassword}</Link>
-                    </Button>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </>
-          </div>
-          <Button type="submit" className="w-full">
-            {buttontitle}
-          </Button>
-          <Social />
-        </form>
-      </Form>
+    <div className="ml-8 mt-12">
+      <form
+        onSubmit={handleSignup}
+        className="w-[400px] h-[300px] px-4 py-4 flex flex-col justify-between rounded-md"
+      >
+        <label htmlFor="Email">Email</label> <br />
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-[300px] h-[40px] border-2 border-gray-900 outline-none rounded-md px-2"
+        />{" "}
+        <br />
+        <label htmlFor="Password">Password</label> <br />
+        <input
+          type={passwordInputType}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-[300px] h-[40px] border-2 border-gray-900 outline-none rounded-md px-2"
+        />
+        <span className="cursor-pointer" onClick={togglePasswordVisibility}>{showPasswordText}</span> <br />
+        <button type="submit" className="px-0 py-2 bg-blue-600 rounded-md">
+          {buttontitle}
+        </button>
+      </form>
     </div>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
