@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import app from "../../firebaseConfig";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import Link from "next/link";
 
 const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
   const auth = getAuth(app);
@@ -60,9 +61,10 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
           onChange={(e) => setPassword(e.target.value)}
           className="w-[300px] h-[40px] border-2 border-gray-900 outline-none rounded-md px-2"
         />
-        <span className="cursor-pointer" onClick={togglePasswordVisibility}>
+        <span className="cursor-pointer relative -top-10 left-[15rem]" onClick={togglePasswordVisibility}>
           {showPasswordText}
         </span>{" "}
+        <Link className={"cursor-pointer mb-7"} href={'/forgotpassword'}>{forgotpassword}</Link>
         <br />
         <button type="submit" className="px-0 py-2 bg-blue-600 rounded-md">
           {buttontitle}
