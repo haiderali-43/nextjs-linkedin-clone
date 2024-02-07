@@ -29,7 +29,7 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
   const handlelogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(email, password, auth).then(
+      await signInWithEmailAndPassword(auth, email, password).then(
         (userCredentials) => {
           const user = userCredentials.user;
           console.log(user);

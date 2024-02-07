@@ -1,8 +1,9 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import app from "../../firebaseConfig";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+
 
 const RegisterForm = ({ buttontitle }) => {
   const auth = getAuth(app);
@@ -21,13 +22,16 @@ const RegisterForm = ({ buttontitle }) => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, email, password).then(
-        (userCredential) => {
-          const user = userCredential.user;
-          router.push("/");
-          console.log(user);
-        }
-      );
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Send email verification
+      await sendEmailVerification(user);
+
+      // Redirect to verifyemail page
+      router.push('/verifyemail');
+
+      console.log(user);
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
