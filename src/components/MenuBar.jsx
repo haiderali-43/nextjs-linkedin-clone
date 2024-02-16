@@ -6,44 +6,85 @@ import Link from "next/link";
 
 const MenuBar = () => {
   return (
-    <div className="mt-6 flex justify-between px-10 ">
-      <div className="hidden md:block">
-        <Menubar className="space-x-7">
-          <MenubarMenu>
-            <MenubarTrigger className="flex flex-col space-y-2">
-              <Compass />
-              <p>Discover</p>
-            </MenubarTrigger>
-            <MenubarTrigger className="flex flex-col space-y-2">
-              <UserRound />
-              <p>People</p>
-            </MenubarTrigger>
-            <MenubarTrigger className="flex flex-col space-y-2">
-              <Youtube />
-              <p>Learning</p>
-            </MenubarTrigger>
-            <MenubarTrigger className="flex flex-col space-y-2">
-              <Briefcase />
-              <p>Jobs</p>
-            </MenubarTrigger>
-            <Separator
-              orientation="vertical"
-              className="text-extrabold bg-black"
-            />
-          </MenubarMenu>
-        </Menubar>
+    <div class="mt-6 flex justify-between px-10">
+      <div class="hidden md:block">
+        <div class="space-x-7 flex">
+          <div class="flex flex-col space-y-2 items-center cursor-pointer">
+            <svg
+              class="w-6 h-6 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12l-6-6v12l6-6z"
+              ></path>
+            </svg>
+            <p class="text-gray-600">Discover</p>
+          </div>
+          <div class="flex flex-col space-y-2 items-center cursor-pointer">
+            <svg
+              class="w-6 h-6 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6s2-4 6-4 6 4 6 4-2 6-6 6-6-2-6-6zm10 8c0 2.21-1.79 4-4 4s-4-1.79-4-4"
+              ></path>
+            </svg>
+            <p class="text-gray-600">People</p>
+          </div>
+          <div class="flex flex-col space-y-2 items-center cursor-pointer">
+            <svg
+              class="w-6 h-6 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 19c1.104 0 2-.896 2-2v-7a2 2 0 0 0-2-2h-4l-3-4H8a2 2 0 0 0-2 2v14"
+              ></path>
+            </svg>
+            <p class="text-gray-600">Learning</p>
+          </div>
+          <div class="flex flex-col space-y-2 items-center cursor-pointer">
+            <svg
+              class="w-6 h-6 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              ></path>
+            </svg>
+            <p class="text-gray-600">Jobs</p>
+          </div>
+          <div class="text-extrabold bg-black"></div>
+        </div>
       </div>
-      <div className="flex items-center -mt-3 space-x-6  absolute right-4 top-5 md:relative md:-top-2 md:left-8  ">
-        <Link className="cursor-pointer text-blue-600" href={"/signup"}>
-          Join Now
-        </Link>
-
-        <Button
-          variant="secondary"
-          className="outline-blue-600 border-2 border-neutral-400 text-blue-600 p-2 rounded-md ml-4"
-        >
+      <div class="flex items-center -mt-3 space-x-6 absolute right-4 top-5 md:relative md:-top-2 md:left-8">
+        <Link href={'/signup'} className="text-blue-500">Join Now</Link>
+        <button class="outline-blue-600 border-2 border-neutral-400 text-blue-600 p-2 rounded-md ml-4">
           Sign in
-        </Button>
+        </button>
       </div>
     </div>
   );
