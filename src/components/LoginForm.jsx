@@ -38,8 +38,12 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
       );
     } catch (error) {
       console.log(error);
+      if (error.code === "auth/user-not-found") {
+        throw new Error("Email is not registered, please sign up");
+      }
     }
   };
+
   return (
     <div className="ml-8 mt-14 w-[400px]">
       <form
@@ -61,10 +65,15 @@ const LoginForm = ({ focusEmailInput, buttontitle, forgotpassword }) => {
           onChange={(e) => setPassword(e.target.value)}
           className="w-[300px] h-[40px] border-2 border-gray-900 outline-none rounded-md px-2"
         />
-        <span className="cursor-pointer relative -top-10 left-[15rem]" onClick={togglePasswordVisibility}>
+        <span
+          className="cursor-pointer relative -top-10 left-[15rem]"
+          onClick={togglePasswordVisibility}
+        >
           {showPasswordText}
         </span>{" "}
-        <Link className={"cursor-pointer mb-7"} href={'/forgotpassword'}>{forgotpassword}</Link>
+        <Link className={"cursor-pointer mb-7"} href={"/forgotpassword"}>
+          {forgotpassword}
+        </Link>
         <br />
         <button type="submit" className="px-0 py-2 bg-blue-600 rounded-md">
           {buttontitle}

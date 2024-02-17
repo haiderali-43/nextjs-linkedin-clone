@@ -2,8 +2,11 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import app from "../../firebaseConfig";
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
-
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 
 const RegisterForm = ({ buttontitle }) => {
   const auth = getAuth(app);
@@ -22,14 +25,18 @@ const RegisterForm = ({ buttontitle }) => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
 
       // Send email verification
       await sendEmailVerification(user);
 
       // Redirect to verifyemail page
-      router.push('/verifyemail');
+      router.push("/verifyemail");
 
       console.log(user);
     } catch (error) {
@@ -38,6 +45,10 @@ const RegisterForm = ({ buttontitle }) => {
       console.log(errorCode, errorMessage);
     }
   };
+
+  if (email) {
+    throw new Error("Email is already registered please sign in");
+  }
 
   return (
     <div className="ml-8 mt-12">
@@ -60,7 +71,10 @@ const RegisterForm = ({ buttontitle }) => {
           onChange={(e) => setPassword(e.target.value)}
           className="w-[300px] h-[40px] border-2 border-gray-900 outline-none rounded-md px-2"
         />
-        <span className="cursor-pointer" onClick={togglePasswordVisibility}>{showPasswordText}</span> <br />
+        <span className="cursor-pointer" onClick={togglePasswordVisibility}>
+          {showPasswordText}
+        </span>{" "}
+        <br />
         <button type="submit" className="px-0 py-2 bg-blue-600 rounded-md">
           {buttontitle}
         </button>

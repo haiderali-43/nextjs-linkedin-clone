@@ -5,10 +5,16 @@ const PostDisplay = ({ postContent, imageUrl }) => {
   return (
     <>
       <div className="bg-white p-4 rounded-md shadow-md mb-4">
-        <p className="text-base mb-2">{postContent}</p>
-        <p className="text-sm text-gray-500">
-          Posted on {new Date().toLocaleDateString()}
-        </p>
+        <div className="flex justify-between px-3">
+          <p className="text-base mb-2">{postContent}</p>
+          <p className="text-sm text-gray-500">
+            {new Date().toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
+        </div>
         {imageUrl && (
           <Image
             src={imageUrl}
