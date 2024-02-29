@@ -81,7 +81,7 @@ const MenuBar = () => {
         </div>
       </div>
       <div class="flex items-center -mt-3 space-x-6 absolute right-4 top-5 md:relative md:-top-2 md:left-8">
-        <Link href={'/signup'} className="text-blue-500">Join Now</Link>
+        <Link href={'/sign-up'} className="text-blue-500">Join Now</Link>
         <button class="outline-blue-600 border-2 border-neutral-400 text-blue-600 p-2 rounded-md ml-4">
           Sign in
         </button>

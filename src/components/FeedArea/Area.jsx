@@ -24,7 +24,7 @@ const Area = () => {
     setPostModalOpen(false);
   };
   return (
-    <div className="w-[49%] border-2 border-grey-400 rounded-md mt-3 m-auto p-2 h-[100vh] overflow-hidden">
+    <div className="md:w-[50%] border-2 border-grey-400 rounded-md mt-3 m-auto p-2 h-[100vh] overflow-hidden">
       <OpenInput handleInputOpen={openPostModal} />
       <Separator className="mt-5" />
       <PostModal
